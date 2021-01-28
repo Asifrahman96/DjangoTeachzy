@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+{% include 'partials/_navbar.html' %}
+<section class="teachers">
+    <div class="container mt-5">
+        <h3 class="heading mb-5">Teachers List</h3>
+        <a href="{% url 'teachers:add_teacher' %}" class="btn btn-dark mb-5"><i class="fas fa-plus-circle"></i> Add Teachers</a>
+        <a href="{% url 'csvs:upload_file_view' %}" class="btn btn-warning mb-5"><i class="fas fa-file-csv"></i> Add Teachers By CSV</a>
+        {% if teachers %}
+        <div class="search mt-5">
+            <form id="search" action="{% url 'teachers:search' %}">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input class="form-control" name="last_name" type="text" placeholder="Enter Last Name"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="subjects">Subjects</label>
+                            <select name="subjects" class="form-control">
+                              <option selected></option>
+                              {% for subject in subjects %}
+                                <option>{{ subject.subject_name }}</option>
+                              {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-warning" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="teachersRow">
+            <div class="row">
+                {% for teacher in teachers %}
+                <div class="col-md-3 mt-5">
+                    <div class="card">
+                        <img src="{{ teacher.profile_picture.url }}" class="img-fluid" alt="{{teacher.first_name}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ teacher.first_name }} {{ teacher.last_name }}</h5>
+                            <p class="card-text">{{ teacher.email }}</p>
+                            <!-- <p class="card-text">
+                                {% for subject_name in teacher.subjects_taken.all %}
+                                    {{ subject_name.subject_name }}
+                                {% endfor %}
+                            </p> -->
+                            <a href="{% url 'teachers:single' teacher.id %}" class="btn btn-dark">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+                <div class="empty text-center">
+                    <h3 class="search-results">
+                        It's Empty Here.
+                    </h3>
+                    <hr>
+                    <a href="{% url 'teachers:add_teacher' %}" class="btn btn-dark"><i class="fas fa-plus-circle"></i> Add Teachers</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

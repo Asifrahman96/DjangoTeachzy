@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+{% include 'partials/_navbar.html' %}
+<section class="home">
+    <div class="container">
+        <div class="cover">
+            <div class="cover_img">
+                <img src="{% static 'images/yelloBG.jpg'%}" class="img-fluid">
+            </div>
+            <div class="cover_caption">
+                <h3><span class="cover_caption_text">Learn Anything,</span>
+                    <span class="cover_caption_text"> Anytime,</span>
+                    <span class="cover_caption_text">Anywhere</span>
+                </h3>
+                <a href="{% url 'teachers:teachers' %}" class="btn btn-dark mt-3">See Our Teachers &#8594;</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

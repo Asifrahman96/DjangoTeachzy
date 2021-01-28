@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+{% include 'partials/_navbar.html' %}
+<div class="container mt-5">
+    <h1>Add new post</h1>
+    <form action="{% url 'teachers:add_teacher' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-dark" type="submit">Add Teacher</button>
+    </form>
+</div>
+{% endblock %}

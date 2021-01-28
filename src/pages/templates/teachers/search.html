@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+{% include 'partials/_navbar.html' %}
+<section class="teachers">
+    <div class="container mt-5">
+    {% if teachers %}
+        <h3 class="heading">Teachers List</h3>
+        <div class="teachersRow">
+            <div class="row">
+                {% for teacher in teachers %}
+                <div class="col-md-3 mt-5">
+                    <div class="card">
+                        <img src="{{ teacher.profile_picture.url }}" class="img-fluid" alt="{{teacher.first_name}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ teacher.first_name }} {{ teacher.last_name }}</h5>
+                            <p class="card-text">{{ teacher.email }}</p>
+                            <!-- <p class="card-text">
+                                {% for subject_name in teacher.subjects_taken.all %}
+                                    {{ subject_name.subject_name }}
+                                {% endfor %}
+                            </p> -->
+                            <a href="{% url 'teachers:single' teacher.id %}" class="btn btn-dark">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty text-center">
+                <h3 class="search-results">
+                    Search results not found
+                </h3>
+                <hr>
+                <a href="{% url 'teachers:teachers'%}" class="btn btn-dark">Go Back</a>
+            </div>
+    {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

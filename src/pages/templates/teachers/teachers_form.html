@@ -1,0 +1,31 @@
+{% extends 'layout.html'%}
+{% block content %}
+{% load static %}
+{% include 'partials/_navbar.html' %}
+<section class="article-form">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Create & Edit Teacher</li>
+            </ol>
+        </nav>
+        <hr class="my-2 bg-dark">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="mb-4">
+                    <h4 class="heading-4">
+                        Create Article Here.
+                    </h4>    
+                </legend>
+                {{ form.media }} 
+                {{ form }}
+            </fieldset>
+            <div class="form-group">    
+                <button class="btn btn-dark" type="submit">Add Teacher</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

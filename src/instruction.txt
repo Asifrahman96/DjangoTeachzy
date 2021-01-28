@@ -1,0 +1,15 @@
+1. python3 -m venv venv - create a virtual environment
+
+2. source venv/bin/activate - activate the virtual environment
+
+3. pip install django - to install django inside virtual environment
+
+4. Please find the requirements.txt file and install the requirements using pip
+
+5. python manage.py makemigrations and migrate  -  to migrate the models to your local database
+
+6. or you can find the SQLite db file in the project, you can dumb all the tables to your local db
+
+7. if you are migrating from models, "python manage.py createsuperuser" - create super admin for the project to use admin panel
+
+8. python manage.py runserver  -  to run the project

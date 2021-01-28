@@ -10,6 +10,8 @@
 
 6. or you can find the SQLite db file in the project, you can dumb all the tables to your local db
 
-7. if you are migrating from models, "python manage.py createsuperuser" - create super admin for the project to use admin panel
+7. If you use my SQLite DB from my project, superuser credential is admin and password is teachzy123
 
-8. python manage.py runserver  -  to run the project
+8. if you are migrating from models, "python manage.py createsuperuser" - create super admin for the project to use admin panel
+
+9. python manage.py runserver  -  to run the project
